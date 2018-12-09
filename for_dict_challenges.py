@@ -53,6 +53,14 @@ school_students = [
     {'first_name': 'Оля'},
   ]
 ]
+name3 = []
+school_class = 1
+for class3 in school_students:
+    for student3 in class3:
+        name3.append(student3['first_name'])
+    print(f'Самое частое имя в классе {school_class}: {Counter(name3).most_common(1)[0][0]}')
+    school_class += 1
+    name3 = []
 # ???
 
 # Пример вывода:
@@ -72,6 +80,18 @@ is_male = {
   'Олег': True,
   'Миша': True,
 }
+
+for class4 in school:
+    count_male = 0
+    count_female = 0
+    for student4 in class4['students']:
+        if is_male[student4['first_name']]:
+            count_male += 1
+        else:
+            count_female += 1
+    class_name = class4['class']
+    print(f'В классе {class_name} девочек: {count_female}, мальчиков: {count_male}')
+
 # ???
 
 # Пример вывода:
@@ -92,7 +112,26 @@ is_male = {
   'Миша': True,
 }
 # ???
-
+max_male = 0
+max_female = 0
+max_male_class = ''
+max_female_class = ''
+for class5 in school:
+    count_male5 = 0
+    count_female5 = 0
+    for student5 in class5['students']:
+        if is_male[student5['first_name']]:
+            count_male5 += 1
+        else:
+            count_female5 += 1
+    if count_male5 > max_male:
+        max_male = count_male5
+        max_male_class = class5['class']
+    elif count_female5 > max_female:
+        max_female = count_male5
+        max_female_class = class5['class']
+print('Больше всего мальчиков в классе', max_male_class)
+print('Больше всего девочек в классе', max_female_class)
 # Пример вывода:
 # Больше всего мальчиков в классе 3c
 # Больше всего девочек в классе 2a
